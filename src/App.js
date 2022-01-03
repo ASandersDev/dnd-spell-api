@@ -11,14 +11,10 @@ function App() {
 
   const addSpell = function() {
     const spellCall = returnSpell();
-    let spell;
     
-    spellCall.then(res => 
-      spell = res);
-
-    console.log(spell);
-    
-    setBlocks([...blocks, <Block key={blocks.length} spell={spell} />]);
+    spellCall.then(spell => {
+      setBlocks([...blocks, <Block key={blocks.length} spell={spell} />]);
+    });
   }
 
   const removeSpell = function() {
