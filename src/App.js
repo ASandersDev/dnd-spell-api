@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import Block from './Components/Block';
-import retrieveSpell from './callDnD';
+import returnSpell from './callDnD';
 
 
 
@@ -10,7 +10,14 @@ function App() {
   const [blocks, setBlocks] = useState([]);
 
   const addSpell = function() {
-    const spell = retrieveSpell();
+    const spellCall = returnSpell();
+    let spell;
+    
+    spellCall.then(res => 
+      spell = res);
+
+    console.log(spell);
+    
     setBlocks([...blocks, <Block key={blocks.length} spell={spell} />]);
   }
 
