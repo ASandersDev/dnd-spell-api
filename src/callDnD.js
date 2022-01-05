@@ -1,35 +1,21 @@
 import axios from 'axios'
 
-let url = 'https://www.dnd5eapi.co/api/spells'
+const getSpell = async () => {
 
-const returnSpell = () => {
+    let url = 'https://www.dnd5eapi.co/api/spells'
 
-    let spell = getSpell()
-    .then(res => res)
+    // Make call to general DnD spell API and return random spell index name
+    let spellIndex = await axios.get(url).then( res => {
+        const randomSpell = Math.floor(Math.random()*(res.data.count));
 
-    return spell.then(res => res);
-}
-
-function getSpell(){
-
-    let spellCall = axios.get(url);
-    let spellIndex = spellCall.then(res => {
-        const randomSpell = Math.floor(Math.random()*220);
         return res.data.results[randomSpell].index
-    })
+    });
 
-    let completeSpell = spellIndex.then(res => {
-        let spellCall = axios.get(url + '/' + res)
+    //Reassign url to include the spell index name
+    url = (url + '/' + spellIndex)
 
-       return spellCall.then(res => {
-           return res.data
-        })
-    })
-
-     return completeSpell.then(res => {
-        return res
-    }) 
-
+    //Make call to specific DnD spell API
+    return axios.get(url).then(res => res.data)
 }
 
-export default returnSpell
+export default getSpell
