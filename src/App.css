@@ -17,7 +17,7 @@
   max-width: 40%;
 }
 
-.block {
+.block_minified {
   display: inline-block;
   height: auto;
   max-width: 200px;
@@ -26,6 +26,10 @@
   border-radius: 8px;
   margin: 10px;
   font-size: 16px;
+}
+
+.block_minified:hover {
+  cursor: pointer;
 }
 
 .block-header {
@@ -41,7 +45,7 @@
   margin: 5px;
 }
 
-.buttonWrapper{
+.buttonWrapper {
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -49,7 +53,7 @@
   border: 3px solid white;
 }
 
-.button {
+.menuButton {
   margin: 5px;
   border-radius: 4px;
   font-size: 16px;

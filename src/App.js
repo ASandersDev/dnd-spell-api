@@ -30,9 +30,9 @@ function App() {
     <div className="App">
       
       <div className="buttonWrapper">
-        <button onClick={addSpell} className="button">Get Spell</button>
-        <button onClick={removeSpell} className="button">Remove Spell</button>
-        <button onClick={clearSpell} className="button">Reset</button>
+        <button onClick={addSpell} className="menuButton">Get Spell</button>
+        <button onClick={removeSpell} className="menuButton">Remove Spell</button>
+        <button onClick={clearSpell} className="menuButton">Reset</button>
       </div>
 
       <header className="block-container">  

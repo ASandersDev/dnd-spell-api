@@ -1,7 +1,7 @@
 
 const Block = ({spell}) => {
     return (
-        <div className="block">
+        <div className="block_minified">
             <div className="block-header">
                 {spell.name}
             </div>
@@ -10,8 +10,11 @@ const Block = ({spell}) => {
                 <br/>
                 Range: {spell.range}
                 <br/>
-                Duration: {spell.duration}
+                Level: {spell.level}
                 <br/>
+                {'damage' in spell &&
+                <>Damage: {spell.damage.damage_at_slot_level[spell.level]} </> 
+                }
             </div>
         </div>
     )
