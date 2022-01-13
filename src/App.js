@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import Block from './Components/Block';
+import EnlargedBlock from './Components/EnlargedBlock';
 import getSpell from './callDnD';
 
 
@@ -8,11 +9,12 @@ import getSpell from './callDnD';
 function App() {
 
   const [blocks, setBlocks] = useState([]);
+  const [enlargedBlock, setEnlargedBlock] = useState({})
 
   const addSpell = () => {
 
     getSpell().then(spell => {
-      setBlocks([...blocks, <Block key={blocks.length} spell={spell} />]);
+      setBlocks([...blocks, <Block key={blocks.length} spell={spell} onClick = {enlargeBlock(spell)} />]);
     });
     
   }
@@ -25,6 +27,10 @@ function App() {
     setBlocks([]);
   }
 
+  const enlargeBlock = (spell) => {
+    setEnlargedBlock(<EnlargedBlock spell={spell}/>)
+  }
+
 
   return (
     <div className="App">
@@ -35,11 +41,11 @@ function App() {
         <button onClick={clearSpell} className="menuButton">Reset</button>
       </div>
 
-      <header className="block-container">  
+      <div className="block-container">  
 
         {blocks}
 
-      </header>
+      </div>
     </div>
   );
 }

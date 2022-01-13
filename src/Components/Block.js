@@ -1,5 +1,20 @@
 
 const Block = ({spell}) => {
+
+    if(spell.level > 0 ){
+        var spellLevel = spell.level
+    }else{
+        spellLevel = 'Cantrip'
+    }
+
+    if('damage' in spell){
+       var damageItems =  Object.getOwnPropertyNames(spell.damage)
+       damageItems = damageItems[1]
+       var damageStartLevel = Object.getOwnPropertyNames(spell.damage[damageItems])
+       damageStartLevel = damageStartLevel[0]
+    }
+
+    
     return (
         <div className="block_minified">
             <div className="block-header">
@@ -10,10 +25,10 @@ const Block = ({spell}) => {
                 <br/>
                 Range: {spell.range}
                 <br/>
-                Level: {spell.level}
+                Level: {spellLevel}
                 <br/>
                 {'damage' in spell &&
-                <>Damage: {spell.damage.damage_at_slot_level[spell.level]} </> 
+                <>Damage: {spell.damage[damageItems][damageStartLevel]} </> 
                 }
             </div>
         </div>
