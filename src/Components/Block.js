@@ -1,5 +1,7 @@
 
-const Block = ({spell}) => {
+const Block = ({spell, onPress}) => {
+
+    console.log(spell)
 
     if(spell.level > 0 ){
         var spellLevel = spell.level
@@ -16,7 +18,7 @@ const Block = ({spell}) => {
 
     
     return (
-        <div className="block_minified">
+        <div className="block_minified" onClick={onPress}>
             <div className="block-header">
                 {spell.name}
             </div>
@@ -35,8 +37,5 @@ const Block = ({spell}) => {
     )
 }
 
-Block.defaultProps = {
-    headerTitle: 'Default'
-}
 
 export default Block

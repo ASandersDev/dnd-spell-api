@@ -9,12 +9,12 @@ import getSpell from './callDnD';
 function App() {
 
   const [blocks, setBlocks] = useState([]);
-  const [enlargedBlock, setEnlargedBlock] = useState({})
+  const [enlargedBlock, setEnlargedBlock] = useState(null)
 
   const addSpell = () => {
 
     getSpell().then(spell => {
-      setBlocks([...blocks, <Block key={blocks.length} spell={spell} onClick = {enlargeBlock(spell)} />]);
+      setBlocks([...blocks, <Block key={blocks.length} spell={spell} onPress={() => {enlargeBlock(spell)}} />]);
     });
     
   }
@@ -23,12 +23,14 @@ function App() {
     setBlocks(blocks.splice(0, blocks.length - 1));
   }
 
-  const clearSpell = () => {
+  const resetSpell = () => {
     setBlocks([]);
+    setEnlargedBlock(null)
+
   }
 
   const enlargeBlock = (spell) => {
-    setEnlargedBlock(<EnlargedBlock spell={spell}/>)
+    setEnlargedBlock(<EnlargedBlock spell={spell} exitPress={() => {setEnlargedBlock(null)}}/>)
   }
 
 
@@ -38,12 +40,15 @@ function App() {
       <div className="buttonWrapper">
         <button onClick={addSpell} className="menuButton">Get Spell</button>
         <button onClick={removeSpell} className="menuButton">Remove Spell</button>
-        <button onClick={clearSpell} className="menuButton">Reset</button>
+        <button onClick={resetSpell} className="menuButton">Reset</button>
       </div>
 
       <div className="block-container">  
 
         {blocks}
+        {enlargedBlock && 
+          <>{enlargedBlock}</>
+        }
 
       </div>
     </div>
