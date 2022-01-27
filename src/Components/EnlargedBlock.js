@@ -24,18 +24,13 @@ function EnlargedBlock({spell, exitPress}) {
             if(typeof elemValue === 'object' &&
                !Array.isArray(elemValue) &&
                elemValue !== null){
-                   let nestedElem = `${elem}: `
-
-                    for(let innerElem in elemValue){
-                        nestedElem = `${nestedElem} 
-                        ${elemValue}: ${elemValue[innerElem]}`
-                    }
-
-                    fullSpell.push(nestedElem)
+                    fullSpell.push(`${elem}: 
+        Name: ${elemValue.name}`)
                }else{
-                   fullSpell.push(`${elem}: ${elemValue}`);
+                    fullSpell.push(`${elem}: ${elemValue}`);
                }
         }
+        console.log(fullSpell)
     }
 
     fullSpell = fullSpell.map((elem, index) => 

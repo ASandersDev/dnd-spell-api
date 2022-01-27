@@ -79,6 +79,7 @@
 .innerBody-enlarged {
   margin: 5px;
   margin-top: 2em;
+  white-space: pre;
 }
 
 .buttonWrapper {
