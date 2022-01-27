@@ -42,6 +42,16 @@
   text-align: center;
 }
 
+.block-header-enlarged {
+  background-color: rgb(120, 170, 226);
+  width: inherit;
+  height: auto;
+  position: fixed;
+
+  font-size: 1.5em;
+  text-align: center;
+}
+
 .block_enlarged {
   z-index: 1;
   position: absolute;
@@ -59,10 +69,16 @@
   float: right;
   background-color: rgb(73, 144, 224);
   border-radius: 3px;
+  font-size: 1em;
 }
 
 .innerBody {
   margin: 5px;
+}
+
+.innerBody-enlarged {
+  margin: 5px;
+  margin-top: 2em;
 }
 
 .buttonWrapper {
